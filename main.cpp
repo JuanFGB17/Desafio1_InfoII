@@ -1,5 +1,6 @@
 #include <iostream>
 #include <matrixGen.h>
+#include <configKey.h>
 using namespace std;
 
 
@@ -9,21 +10,34 @@ void rotarMatrizAntihorario(int** matriz, int n);
 
 int main()
 {
-
     //Recibir información
-
+    int compare, minSizeMat;
+    cout << "La llave k esta conformada por (fila, columna, valores comparativos)" << endl;
+    do{
+        while (true){
+            cout << "Cuantos valores comparativos desea ingresar" << endl;
+            cin >> compare;
+            if (cin.fail()){
+                cin.clear();
+                while (cin.get() != '\n') {
+                    continue;}}
+            else
+                break;}
+    }while(compare<=0);
+    int *llave;
+    llave=configuracionKey(compare, minSizeMat);
 
     //Procesar información
-    int minSizeMat = 5, size=3;
-    int llave[5]={4,3,1,-1,0};
+    cout << endl << "Minsizemat: " << minSizeMat <<endl;
+    cout << "Compare: " << compare <<endl;
+    for (int i = 0; i<=compare+1; i++){
+        cout << llave[i] << ' ';}
 
     //Generar matriz
 
 
     int **matriz;
     matriz=generarMatriz(minSizeMat);
-
-    cout<<sizeof(matriz)<<endl;
 
     liberarMatriz(matriz, minSizeMat);
 
@@ -35,6 +49,7 @@ int main()
 
 
 
+    delete [] llave;
     return 0;
 }
 
