@@ -4,6 +4,21 @@ using namespace std;
 
 int main()
 {
-    cout << "Hello World!" << endl;
+    //Recibir información
+
+
+
+    //Procesar información
+
+
+
+    //Generar matriz
+
+
+
+    //Generar la cerradura
+
+
+
     return 0;
 }
