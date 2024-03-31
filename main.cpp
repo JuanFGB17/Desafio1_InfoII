@@ -1,5 +1,6 @@
 #include <iostream>
 #include <matrixGen.h>
+#include <configKey.h>
 using namespace std;
 
 
@@ -9,88 +10,34 @@ void rotarMatrizAntihorario(int** matriz, int n);
 
 int main()
 {
-    int size, k=0, minsizemat;
+    //Recibir información
+    int compare, minSizeMat;
     cout << "La llave k esta conformada por (fila, columna, valores comparativos)" << endl;
     do{
         while (true){
             cout << "Cuantos valores comparativos desea ingresar" << endl;
-            cin >> size;
+            cin >> compare;
             if (cin.fail()){
                 cin.clear();
                 while (cin.get() != '\n') {
                     continue;}}
             else
                 break;}
-    }while(size<=0);
-    int *llave = new int[size + 2];
-    do{
-        while (true){
-            cout << "Ingrese una fila mayor o igual a 0" << endl;
-            cin >> k;
-            if (cin.fail()){
-                cin.clear();
-                while (cin.get() != '\n') {
-                    continue;}}
-            else
-                break;}
-    }while(k<0);
-    minsizemat=k;
-    llave[0] = k;
-    do{
-        while (true){
-            cout << "Ingrese una columna mayor o igual a 0" << endl;
-            cin >> k;
-            if (cin.fail()){
-                cin.clear();
-                while (cin.get() != '\n') {
-                    continue;}}
-            else
-                break;}
-    }while(k<0);
-    if (minsizemat<k)
-        minsizemat=k;
-    if (minsizemat%2==0)
-        minsizemat++;
-    else
-        minsizemat += 2;
-    llave[1] = k;
-    cout << "Ingrese los valores comparativos (-1, 0, 1)" << endl;
-    for (int i = 2; i<=size+1; i++){
-        do{
-            while (true){
-                cout << "Valor comparativo" << endl;
-                cin >> k;
-                if (cin.fail()){
-                    cin.clear();
-                    while (cin.get() != '\n') {
-                        continue;}}
-                else
-                    break;}
-        }while(k!=-1 && k!=1 && k!=0);
-        llave[i] = k;
-    }
-    for (int i = 0; i<=size+1; i++){
-        cout << llave[i] << ' ';
-    }
-    delete [] llave;
-    cout << endl << "Minsizemat: " << minsizemat <<endl;
-    cout << "Comparaciones: " << size <<endl;
-
-
-    //Recibir información
-
+    }while(compare<=0);
+    int *llave;
+    llave=configuracionKey(compare, minSizeMat);
 
     //Procesar información
-    int minSizeMat = 5, size=3;
-    int llave[5]={4,3,1,-1,0};
+    cout << endl << "Minsizemat: " << minSizeMat <<endl;
+    cout << "Compare: " << compare <<endl;
+    for (int i = 0; i<=compare+1; i++){
+        cout << llave[i] << ' ';}
 
     //Generar matriz
 
 
     int **matriz;
     matriz=generarMatriz(minSizeMat);
-
-    cout<<sizeof(matriz)<<endl;
 
     liberarMatriz(matriz, minSizeMat);
 
@@ -102,7 +49,7 @@ int main()
 
 
 
-
+    delete [] llave;
     return 0;
 }
 
