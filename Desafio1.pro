@@ -4,4 +4,12 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        main.cpp
+        configKey.cpp \
+        lockGen.cpp \
+        main.cpp \
+        matrixGen.cpp
+
+HEADERS += \
+    configKey.h \
+    lockGen.h \
+    matrixGen.h
