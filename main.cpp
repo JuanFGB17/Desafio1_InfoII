@@ -23,9 +23,15 @@ int main()
     rotarMatrizAntihorario(matriz, tamano);
     cout << "\nMatriz rotada en sentido antihorario:" << endl;
     imprimirMatriz(matriz, tamano);
+    rotarMatrizAntihorario(matriz, tamano);
+    cout << "\nMatriz rotada en sentido antihorario:" << endl;
+    imprimirMatriz(matriz, tamano);
+    rotarMatrizAntihorario(matriz, tamano);
+    cout << "\nMatriz rotada en sentido antihorario:" << endl;
+    imprimirMatriz(matriz, tamano);
+
 
     liberarMatriz(matriz, tamano);
-
     return 0;
 }
 
@@ -79,7 +85,7 @@ void liberarMatriz(int**& matriz, int n) {
 // Función para rotar la matriz en sentido antihorario
 void rotarMatrizAntihorario(int** matriz, int n) {
     // Iterar a través de las capas concéntricas de la matriz
-    for (int capa = 0; capa < n / 2; ++capa) {
+    for (int capa = 0; capa < n / 2; capa++) {
         int limite = n - capa - 1; // Límite para la iteración en cada capa
 
         // Iterar a través de los elementos de cada capa
