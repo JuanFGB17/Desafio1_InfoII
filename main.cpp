@@ -11,7 +11,6 @@ void rotarMatrizAntihorario(int** matriz, int n);
 
 int main()
 {
-
     int** matriz;
     int tamano;
     cout << "Ingrese el tamaio impar de la matriz: ";
@@ -33,24 +32,6 @@ int main()
 
 
     liberarMatriz(matriz, tamano);
-
-    //Recibir información
-
-
-
-    //Procesar información
-
-
-
-    //Generar matriz
-
-
-
-    //Generar la cerradura
-
-
-
-
     return 0;
 }
 
