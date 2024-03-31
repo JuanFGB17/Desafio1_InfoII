@@ -1,41 +1,33 @@
 #include <iostream>
-
+#include <matrixGen.h>
 using namespace std;
 
 
-
-void generarMatriz(int**& matriz, int n);
 void imprimirMatriz(int** matriz, int n);
-void liberarMatriz(int**& matriz, int n);
+void liberarMatriz(int** matriz, int n);
 void rotarMatrizAntihorario(int** matriz, int n);
 
 int main()
 {
 
-    int** matriz;
-    int tamano;
-    cout << "Ingrese el tamaio impar de la matriz: ";
-    cin >> tamano;
-
-    generarMatriz(matriz, tamano);
-
-    cout << "Matriz generada:" << endl;
-    imprimirMatriz(matriz, tamano);
-    rotarMatrizAntihorario(matriz, tamano);
-    cout << "\nMatriz rotada en sentido antihorario:" << endl;
-    imprimirMatriz(matriz, tamano);
-
-    liberarMatriz(matriz, tamano);
-
     //Recibir información
 
 
-
     //Procesar información
-
-
+    int minSizeMat = 5, size=3;
+    int llave[5]={4,3,1,-1,0};
 
     //Generar matriz
+
+
+    int **matriz;
+    matriz=generarMatriz(minSizeMat);
+
+    cout<<sizeof(matriz)<<endl;
+
+    liberarMatriz(matriz, minSizeMat);
+
+
 
 
 
@@ -46,33 +38,7 @@ int main()
     return 0;
 }
 
-// Función para generar una matriz con números consecutivos dejando el centro vacío
-void generarMatriz(int**& matriz, int n) {
-    // Verificar que el tamaño de la matriz sea impar
-    if (n % 2 == 0) {
-        cout << "El tamaño de la matriz debe ser impar." << endl;
-        return;
-    }
 
-    // Crear e inicializar la matriz de tamaño n x n
-    matriz = new int*[n];
-    for (int i = 0; i < n; i++) {
-        matriz[i] = new int[n];
-    }
-
-    // Rellenar la matriz con números consecutivos
-    int numero = 1;
-    int centro = n / 2;
-    for (int fila = 0; fila < n; fila++) {
-        for (int col = 0; col < n; col++) {
-            if (fila == centro && col == centro) {
-                matriz[fila][col] = 0;  // Dejar el centro vacío
-            } else {
-                matriz[fila][col] = numero++;
-            }
-        }
-    }
-}
 
 // Función para imprimir la matriz
 void imprimirMatriz(int** matriz, int n) {
@@ -85,12 +51,11 @@ void imprimirMatriz(int** matriz, int n) {
 }
 
 // Función para liberar la memoria de la matriz
-void liberarMatriz(int**& matriz, int n) {
+void liberarMatriz(int** matriz, int n) {
     for (int i = 0; i < n; i++) {
         delete[] matriz[i];
     }
     delete[] matriz;
-    matriz = nullptr;
 }
 
 // Función para rotar la matriz en sentido antihorario
