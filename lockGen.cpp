@@ -31,6 +31,10 @@ int *lockFinder(int **matriz, int *llave, int minSizeMat, int compare)
                 else if(sizeMat<minSizeMat){
                     fila--;
                     columna--;}
+                if (sizeMat<minSizeMat && (fila>=sizeMat || columna>=sizeMat) && (pin<matriz1[fila][columna] || pin==matriz1[fila][columna])){
+                    cout << "La llave ingresada no tiene posible cerradura." << endl;
+                    break;
+                }
                 //funcion crea matriz
                 matriz1=generarMatriz(sizeMat);
                 imprimirMatriz(matriz1, sizeMat);
@@ -46,12 +50,8 @@ int *lockFinder(int **matriz, int *llave, int minSizeMat, int compare)
                         cout<<endl;
                     }
                 }
-                if ((pin<matriz1[fila][columna] || pin==matriz1[fila][columna]) && fila>=1 && fila<=sizeMat-2 && columna>=1 && columna<=sizeMat-2){
+                if ((pin<matriz1[fila][columna] || pin==matriz1[fila][columna]) && fila>=1 && fila<=sizeMat-1 && columna>=1 && columna<=sizeMat-1){
                     sizeMat -= 2;
-                }
-                else if (sizeMat<minSizeMat && (fila>=sizeMat-2 || columna>=sizeMat-2) && (pin<matriz1[fila][columna] || pin==matriz1[fila][columna])){
-                    cout << "La llave ingresada no tiene posible cerradura." << endl;
-                    break;
                 }
                 else if (pin<matriz1[fila][columna] || pin==matriz1[fila][columna]){
                     sizeMat += 2;
@@ -116,10 +116,9 @@ int *lockFinder(int **matriz, int *llave, int minSizeMat, int compare)
         cout << fila <<" Este es la fila"<< endl;
         cout << columna <<" Este es la columna"<< endl;
         cout<<endl;
-        /*if (sizeMat<minSizeMat && (fila>=sizeMat-2 || columna>=sizeMat-2) && (pin<matriz1[fila][columna] || pin==matriz1[fila][columna])){
-            cout << "La llave ingresada no tiene posible cerradura." << endl;
+        if (sizeMat<minSizeMat && (fila>=sizeMat || columna>=sizeMat) && (pin<matriz1[fila][columna] || pin==matriz1[fila][columna])){
             break;
-        }*/
+        }
         liberarMatriz(matriz1, sizeMat);
         if(llave[i+1] != 0){
             sizeMat=minSizeMat;
