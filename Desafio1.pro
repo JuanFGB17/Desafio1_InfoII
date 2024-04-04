@@ -7,9 +7,11 @@ SOURCES += \
         configKey.cpp \
         lockGen.cpp \
         main.cpp \
-        matrixGen.cpp
+        matrixGen.cpp \
+        verify.cpp
 
 HEADERS += \
     configKey.h \
     lockGen.h \
-    matrixGen.h
+    matrixGen.h \
+    verify.h

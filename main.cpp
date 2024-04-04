@@ -38,11 +38,12 @@ int main()
 
     //Generar matriz
 
-    int **matriz, *lockX;
+    int **matriz;
     matriz=generarMatriz(minSizeMat);
 
     //Generar la cerradura
-    lockX=lockFinder(matriz, llave, minSizeMat, compare, found);
+    int *lockX, *rotaciones=new int[compare+1];
+    lockX=lockFinder(matriz, llave, minSizeMat, compare, found, rotaciones);
     if (found){
         cout<<"La cerradura es: X[";
         for (int i = 0; i<compare+1; i++){
@@ -52,10 +53,24 @@ int main()
         }
         }
         cout<<"]"<<endl;
+        cout<<"Las rotaciones de cada matriz son: X[";
+        for (int i = 0; i<compare+1; i++){
+            cout << rotaciones[i];
+            if(i!=compare){
+                cout<<",";
+            }
+        }
+        cout<<"]"<<endl;
     }
+    //Validacion regla de apertura sobre una cerradura
+
+
+
+
     liberarMatriz(matriz, minSizeMat);
     delete [] llave;
     delete [] lockX;
+    delete [] rotaciones;
     return 0;
 }
 
