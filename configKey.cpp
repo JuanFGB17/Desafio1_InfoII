@@ -29,6 +29,10 @@ int *configuracionKey(int compare, int &minSizeMat) {
                     continue;}}
             else
                 break;}
+        if (minSizeMat==1 && k==1){
+            k=-1;
+            cout << "La fila y columna no pueden tener ambas el valor 1" << endl;
+        }
     }while(k<0);
     if (minSizeMat<k)
         minSizeMat=k;

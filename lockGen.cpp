@@ -17,16 +17,16 @@ int *lockFinder(int **matriz, int *llave, int minSizeMat, int compare)
     fila=llave[0];
     columna=llave[1];
     pin=matriz[fila][columna];
+    cout<<pin<<endl;
     sizeMat=minSizeMat;
     lockX[0] = sizeMat;
     for (int i = 2; i<compare+2; i++)
     {
-
         if (llave[i]==1){
             do{
-                if(sizeMat>minSizeMat){
-                    fila++;
-                    columna++;
+                if (sizeMat<minSizeMat-2){
+                    cout << "La llave ingresada no tiene posible cerradura." << endl;
+                    break;
                 }
                 //funcion crea matriz
                 matriz1=generarMatriz(sizeMat);
@@ -43,9 +43,20 @@ int *lockFinder(int **matriz, int *llave, int minSizeMat, int compare)
                         cout<<endl;
                     }
                 }
-                if (pin<matriz1[fila][columna] || pin==matriz1[fila][columna]){
+                if ((pin<matriz1[fila][columna] || pin==matriz1[fila][columna]) && fila>=1 && fila<=sizeMat-1 && columna>=1 && columna<=sizeMat-1){
+                    sizeMat -= 2;
+                    fila--;
+                    columna--;
+                }
+                else if (pin<matriz1[fila][columna] || pin==matriz1[fila][columna]){
                     sizeMat += 2;
-                    }
+                    fila++;
+                    columna++;
+                }
+                if (fila>=sizeMat || columna >= sizeMat){
+                    cout << "La llave ingresada no tiene posible cerradura." << endl;
+                    break;
+                }
                     cout<<matriz1[fila][columna]<<endl;
             }while(pin<matriz1[fila][columna] || pin==matriz1[fila][columna]); //termina cuando se cumpla lo deseado
             pin=matriz1[fila][columna];
@@ -53,10 +64,6 @@ int *lockFinder(int **matriz, int *llave, int minSizeMat, int compare)
         }
         else if (llave[i]==0){
             do{
-                if(sizeMat>minSizeMat){
-                    fila++;
-                    columna++;
-                }
                 //funcion crea matriz
                 matriz1=generarMatriz(sizeMat);
                 imprimirMatriz(matriz1, sizeMat);
@@ -72,19 +79,12 @@ int *lockFinder(int **matriz, int *llave, int minSizeMat, int compare)
                         cout<<endl;
                     }
                 }
-                if (pin<matriz1[fila][columna] || pin>matriz1[fila][columna]){
-                    sizeMat += 2;
-                   }
                 cout<<matriz1[fila][columna]<<endl;
             }while(pin!=matriz1[fila][columna]); //termina cuando se cumpla lo deseado
             pin=matriz1[fila][columna];
         }
         else {
             do{
-                if(sizeMat>minSizeMat){
-                    fila++;
-                    columna++;
-                }
                 //funcion crea matriz
                 matriz1=generarMatriz(sizeMat);
                 imprimirMatriz(matriz1, sizeMat);
@@ -102,21 +102,29 @@ int *lockFinder(int **matriz, int *llave, int minSizeMat, int compare)
                 }
                 if (pin>matriz1[fila][columna] || pin==matriz1[fila][columna]){
                     sizeMat += 2;
+                    fila++;
+                    columna++;
                     }
                 cout<<matriz1[fila][columna]<<endl;
             }while(pin>matriz1[fila][columna] || pin==matriz1[fila][columna]); //termina cuando se cumpla lo deseado
             pin=matriz1[fila][columna];
         }
-        lockX[cont++] = sizeMat;
         cout << sizeMat <<" Tamano Matriz"<< endl;
         cout << pin <<" Este es el pin"<< endl;
         cout << fila <<" Este es la fila"<< endl;
         cout << columna <<" Este es la columna"<< endl;
         cout<<endl;
-        sizeMat=minSizeMat;
-        fila=llave[0];
-        columna=llave[1];
+        if (fila>=sizeMat || columna >= sizeMat){
+            break;
+        }
+        lockX[cont++] = sizeMat;
+        liberarMatriz(matriz1, sizeMat);
+        if (((llave[i-1]==-1 && llave[i]==-1) || llave[i-1]==0 || llave[i]==0) && i>2){
+        }
+        else if(llave[i+1] != 0 && i<compare+1){
+            sizeMat=minSizeMat;
+            fila=llave[0];
+            columna=llave[1];}
     }
-    liberarMatriz(matriz1, sizeMat);
     return lockX;
 }
