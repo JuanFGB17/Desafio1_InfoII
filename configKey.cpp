@@ -16,8 +16,8 @@ int *configuracionKey(int compare, int &minSizeMat) {
                     continue;}}
             else
                 break;}
-    }while(k<0);
-    minSizeMat=k;
+    }while(k<1);
+    minSizeMat=k-1;
     llave[0] = k;
     do{
         while (true){
@@ -29,12 +29,12 @@ int *configuracionKey(int compare, int &minSizeMat) {
                     continue;}}
             else
                 break;}
-        if (minSizeMat==1 && k==1){
-            k=-1;
-            cout << "La fila y columna no pueden tener ambas el valor 1" << endl;
+        if (minSizeMat==2 && k==2){
+            k=0;
+            cout << "La fila y columna no pueden tener ambas el valor 2" << endl;
         }
-    }while(k<0);
-    if (minSizeMat<k)
+    }while(k<1);
+    if (minSizeMat<k-1)
         minSizeMat=k;
     if (minSizeMat%2==0)
         minSizeMat++;
@@ -55,6 +55,9 @@ int *configuracionKey(int compare, int &minSizeMat) {
                     break;}
         }while(k!=-1 && k!=1 && k!=0);
         llave[i] = k;
+    }
+    for(int u=0;u<2;u++){
+        llave[u]-=1;
     }
     return llave;
 }
