@@ -15,11 +15,12 @@ bool valid(int *llave, int *lock, int compare)
     else{
         matriz1 = generarMatriz(lock[0]);
         pin=matriz1[fila][columna];
+        cout<< endl << "La matriz siguiente roto 0 veces." <<endl;
         cout << endl;
         imprimirMatriz(matriz1,lock[0]);
         cout << endl;
         liberarMatriz(matriz1,lock[0]);
-        cout<< "En la fila " << fila+1 << " y la columna " << columna+1 << " el valor es: " << pin <<endl;
+        cout << "En la fila " << fila+1 << " y la columna " << columna+1 << " el valor es: " << pin <<endl;
     }
 
         cont=1;
@@ -54,8 +55,8 @@ bool valid(int *llave, int *lock, int compare)
                 cout << endl;
                 imprimirMatriz(matriz1,lock[cont]);
                 cout << endl;
-                cout<< "El valor anterior es " << pin << ", el valor actal es " <<pin1<<endl;
-                cout<< "El valor actal se encuentra en la fila " << fila+1 << " y la columna " << columna+1 <<endl;
+                cout<< "El valor anterior es " << pin << ", el valor actual es " <<pin1<<endl;
+                cout<< "El valor actual se encuentra en la fila " << fila+1 << " y la columna " << columna+1 <<endl;
 
                 if(pin<pin1 || pin==pin1){
                     liberarMatriz(matriz1,lock[cont]);
@@ -91,8 +92,8 @@ bool valid(int *llave, int *lock, int compare)
                 cout << endl;
                 imprimirMatriz(matriz1,lock[cont]);
                 cout << endl;
-                cout<< "El valor anterior es " << pin << ", el valor actal es " <<pin1<<endl;
-                cout<< "El valor actal se encuentra en la fila " << fila+1 << " y la columna " << columna+1 <<endl;
+                cout<< "El valor anterior es " << pin << ", el valor actual es " <<pin1<<endl;
+                cout<< "El valor actual se encuentra en la fila " << fila+1 << " y la columna " << columna+1 <<endl;
 
                 if(pin>pin1 || pin==pin1){
                     liberarMatriz(matriz1,lock[cont]);
@@ -128,8 +129,8 @@ bool valid(int *llave, int *lock, int compare)
                 cout << endl;
                 imprimirMatriz(matriz1,lock[cont]);
                 cout << endl;
-                cout<< "El valor anterior es " << pin << ", el valor actal es " <<pin1<<endl;
-                cout<< "El valor actal se encuentra en la fila " << fila+1 << " y la columna " << columna+1 <<endl;
+                cout<< "El valor anterior es " << pin << ", el valor actual es " <<pin1<<endl;
+                cout<< "El valor actual se encuentra en la fila " << fila+1 << " y la columna " << columna+1 <<endl;
 
                 if(pin!=pin1 || pin==0 || pin1==0){
                     liberarMatriz(matriz1,lock[cont]);
@@ -154,16 +155,19 @@ bool valid(int *llave, int *lock, int* rotaciones, int compare)
         matriz1 = generarMatriz(lock[0]);
         rotarMatriz(matriz1,lock[0]);
         pin=matriz1[fila][columna];
+        cout<< endl << "La matriz siguiente roto " << rotaciones[0] << " veces." << endl << endl;
         imprimirMatriz(matriz1,lock[0]);
+        cout<< endl << "En la fila " << fila+1 << " y la columna " << columna+1 << " el valor es: " << pin <<endl;
         liberarMatriz(matriz1,lock[0]);
         cout<<"inicio "<<pin<<endl;
     }
     else{
         matriz1 = generarMatriz(lock[0]);
         pin=matriz1[fila][columna];
+        cout<< endl << "La matriz siguiente roto " << rotaciones[0] << " veces." << endl << endl;
         imprimirMatriz(matriz1,lock[0]);
+        cout<< endl << "En la fila " << fila+1 << " y la columna " << columna+1 << " el valor es: " << pin <<endl;
         liberarMatriz(matriz1,lock[0]);
-        cout<<"inicio "<<pin<<endl;
     }
 
     cont=1;
@@ -187,17 +191,16 @@ bool valid(int *llave, int *lock, int* rotaciones, int compare)
 
             if(rotaciones[cont]==0){
                 pin1=matriz1[fila][columna];
-                cout<<"no roto "<<endl;
             }
-
             for (rot=1;rot<=rotaciones[cont];rot++){
                 rotarMatriz(matriz1,lock[cont]);
                 pin1=matriz1[fila][columna];
-                cout<<"roto "<<endl;
-            }
 
+            }
+            cout<< endl << "La matriz siguiente roto " << rotaciones[cont] << " veces." << endl << endl;
             imprimirMatriz(matriz1,lock[cont]);
-            cout<<pin<<' '<<pin1<<endl;
+            cout<< endl << "El valor anterior es " << pin << ", el valor actual es " << pin1 << endl;
+            cout<< "El valor actual se encuentra en la fila " << fila+1 << " y la columna " << columna+1 <<endl;
 
             if(pin<pin1 || pin==pin1){
                 liberarMatriz(matriz1,lock[cont]);
@@ -222,17 +225,16 @@ bool valid(int *llave, int *lock, int* rotaciones, int compare)
 
             if(rotaciones[cont]==0){
                 pin1=matriz1[fila][columna];
-                cout<<"no roto"<<endl;
             }
-
             for (rot=1;rot<=rotaciones[cont];rot++){
                 rotarMatriz(matriz1,lock[cont]);
                 pin1=matriz1[fila][columna];
-                cout<<"roto"<<endl;
-            }
 
+            }
+            cout<< endl << "La matriz siguiente roto " << rotaciones[cont] << " veces." << endl << endl;
             imprimirMatriz(matriz1,lock[cont]);
-            cout<<pin<<' '<<pin1<<endl;
+            cout<< endl << "El valor anterior es " << pin << ", el valor actual es " << pin1 << endl;
+            cout<< "El valor actual se encuentra en la fila " << fila+1 << " y la columna " << columna+1 <<endl;
 
             if(pin>pin1 || pin==pin1){
                 liberarMatriz(matriz1,lock[cont]);
@@ -245,17 +247,16 @@ bool valid(int *llave, int *lock, int* rotaciones, int compare)
 
             if(rotaciones[cont]==0){
                 pin1=matriz1[fila][columna];
-                cout<<"no roto"<<endl;
             }
-
             for (rot=1;rot<=rotaciones[cont];rot++){
                 rotarMatriz(matriz1,lock[cont]);
                 pin1=matriz1[fila][columna];
-                cout<<"roto"<<endl;
-            }
 
+            }
+            cout<< endl << "La matriz siguiente roto " << rotaciones[cont] << " veces." << endl << endl;
             imprimirMatriz(matriz1,lock[cont]);
-            cout<<pin<<' '<<pin1<<endl;
+            cout<< endl << "El valor anterior es " << pin << ", el valor actual es " << pin1 << endl;
+            cout<< "El valor actual se encuentra en la fila " << fila+1 << " y la columna " << columna+1 <<endl;
 
             if(pin!=pin1){
                 liberarMatriz(matriz1,lock[cont]);

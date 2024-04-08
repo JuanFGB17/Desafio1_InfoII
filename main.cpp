@@ -55,11 +55,18 @@ int main()
             int *llave;
             llave=configuracionKey(compare, minSizeMat);
 
-            /*cout << endl << "Minsizemat: " << minSizeMat <<endl;
-            cout << "Compare: " << compare <<endl;
-            for (int i = 0; i<=compare+1; i++){
-                cout << llave[i] << ' ';}
-            cout<<endl;*/
+            cout << endl << "La llave es: k[";
+            for (int i = 0; i<compare+2; i++){
+                if (i <= 1){
+                    cout << llave[i]+1;}
+                else{
+                    cout << llave[i];
+                }
+                if(i!=compare+1){
+                    cout<<",";
+                }
+            }
+            cout << "]" << endl;
 
             //Generar matriz
 
@@ -70,12 +77,12 @@ int main()
             int *lockX, *rotaciones=new int[compare+1];
             lockX=lockFinder(matriz, llave, minSizeMat, compare, found, rotaciones);
             if (found){
-                cout<<"La cerradura es: X[";
+                cout << "La cerradura es: X[";
                 for (int i = 0; i<compare+1; i++){
                 cout << lockX[i];
                     if(i!=compare){
                     cout<<",";
-                }
+                    }
                 }
                 cout<<"]"<<endl;
                 cout<<"Las rotaciones de cada matriz son: X[";
@@ -86,6 +93,7 @@ int main()
                     }
                 }
                 cout<<"]"<<endl;
+
                 //Validacion regla de apertura sobre una cerradura
                 do{
                         while (true){
@@ -137,10 +145,29 @@ int main()
             llave=configuracionKey(compare);
 
             //ingresar cerradura
+
             lockX = cerradura(compare);
-            /*for (int i = 0; i<compare+1; i++){
-                cout << lockX[i] << ' ';}
-            cout<<endl;*/
+
+            cout << endl << "La llave es: k[";
+            for (int i = 0; i<compare+2; i++){
+                if (i <= 1){
+                    cout << llave[i]+1;}
+                else{
+                    cout << llave[i];
+                }
+                if(i!=compare+1){
+                    cout<<",";
+                }
+            }
+
+            cout << "]" << endl << "La cerradura es: X[";
+            for (int i = 0; i<compare+1; i++){
+                cout << lockX[i];
+                if(i!=compare){
+                    cout<<",";
+                }
+            }
+            cout<<"]"<<endl;
 
             //validar
 

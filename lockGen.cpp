@@ -12,7 +12,6 @@ int *lockFinder(int **matriz, int *llave, int minSizeMat, int compare, bool &fou
     if (llave[2]==1 && llave[0]==0 && llave[1]<minSizeMat){
         //rotar matriz inicial
         rotarMatriz(matriz, minSizeMat);
-        //imprimirMatriz(matriz, minSizeMat);
         contRot++;
     }
 
@@ -20,7 +19,6 @@ int *lockFinder(int **matriz, int *llave, int minSizeMat, int compare, bool &fou
     columna=llave[1];
     pin=matriz[fila][columna];
     liberarMatriz(matriz, minSizeMat);
-    cout<<pin<<endl;
     sizeMat=minSizeMat;
     lockX[0] = sizeMat;
     rotaciones[0] = contRot;
@@ -33,8 +31,6 @@ int *lockFinder(int **matriz, int *llave, int minSizeMat, int compare, bool &fou
                 //funcion crea matriz
                 matriz1=generarMatriz(sizeMat);
                 pin1=matriz1[fila][columna];
-                /*imprimirMatriz(matriz1, sizeMat);
-                cout<<endl;*/
 
                 for (int j=0; j<3; j++) //veces que rotara la matriz para que se cumpla lo deseado = 3
                 {
@@ -45,8 +41,6 @@ int *lockFinder(int **matriz, int *llave, int minSizeMat, int compare, bool &fou
                         //rotar matriz inicial
                         rotarMatriz(matriz1, sizeMat);
                         pin1=matriz1[fila][columna];
-                        /*imprimirMatriz(matriz1, sizeMat);
-                        cout<<endl;*/
                         contRot++;
                     }
                 }
@@ -72,7 +66,7 @@ int *lockFinder(int **matriz, int *llave, int minSizeMat, int compare, bool &fou
                     columna++;
                     contRot=0;
                 }
-                //cout<<pin1<<endl;
+
             }while(pin<pin1 || pin==pin1); //termina cuando se cumpla lo deseado
             pin=pin1;
         }
@@ -82,8 +76,6 @@ int *lockFinder(int **matriz, int *llave, int minSizeMat, int compare, bool &fou
                 //funcion crea matriz
                 matriz1=generarMatriz(sizeMat);
                 pin1=matriz1[fila][columna];
-                /*imprimirMatriz(matriz1, sizeMat);
-                cout<<endl;*/
 
                 for (int j=0; j<3; j++) //veces que rotara la matriz para que se cumpla lo deseado
                 {
@@ -94,12 +86,9 @@ int *lockFinder(int **matriz, int *llave, int minSizeMat, int compare, bool &fou
                         //rotar matriz
                         rotarMatriz(matriz1, sizeMat);
                         pin1=matriz1[fila][columna];
-                        /*imprimirMatriz(matriz1, sizeMat);
-                        cout<<endl;*/
                         contRot++;
                     }
                 }
-                //cout<<pin1<<endl;
             }while(pin!=matriz1[fila][columna]); //termina cuando se cumpla lo deseado
             pin=pin1;
         }
@@ -109,8 +98,6 @@ int *lockFinder(int **matriz, int *llave, int minSizeMat, int compare, bool &fou
                 //funcion crea matriz
                 matriz1=generarMatriz(sizeMat);
                 pin1=matriz1[fila][columna];
-                /*imprimirMatriz(matriz1, sizeMat);
-                cout<<endl;*/
 
                 for (int j=0; j<3; j++) //veces que rotara la matriz para que se cumpla lo deseado
                 {
@@ -120,8 +107,6 @@ int *lockFinder(int **matriz, int *llave, int minSizeMat, int compare, bool &fou
                         //rotar matriz inicial
                         rotarMatriz(matriz1, sizeMat);
                         pin1=matriz1[fila][columna];
-                        /*imprimirMatriz(matriz1, sizeMat);
-                        cout<<endl;*/
                         contRot++;
                     }
                 }
@@ -133,19 +118,13 @@ int *lockFinder(int **matriz, int *llave, int minSizeMat, int compare, bool &fou
                     columna++;
                     contRot =0;
                     }
-                //cout<<pin1<<endl;
+
             }while(pin>pin1 || pin==pin1); //termina cuando se cumpla lo deseado
             pin=pin1;
         }
 
-        /*cout << sizeMat <<" Tamano Matriz"<< endl;
-        cout << pin <<" Este es el pin"<< endl;
-        cout << fila <<" Este es la fila"<< endl;
-        cout << columna <<" Este es la columna"<< endl;
-        cout<<endl;*/
-
-        if((pin1<sizeMat)&&llave[i+1]==1){ //
-            cout << "La llave ingresada no tiene posible cerradura." << endl;
+        if((pin1<sizeMat)&&llave[i+1]==1){
+            cout << endl << "La llave ingresada no tiene posible cerradura." << endl;
             found = false;
             break;
         }
