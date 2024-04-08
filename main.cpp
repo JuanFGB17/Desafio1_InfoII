@@ -114,11 +114,34 @@ int main()
         case 2:{
 
             //ingresar llave
+            int compare;
+
+            cout << "La llave K esta conformada por (fila, columna, valores comparativos)" << endl;
+            cout<<"Ejemplo con 3 valores comparativos K[4,3,1,-1,0]"<<endl;
+            do{
+                while (true){
+                    cout << "Ingrese cuantos valores comparativos desea." << endl;
+                    cin >> compare;
+                    if (cin.fail()){
+                        cin.clear();
+                        while (cin.get() != '\n') {
+                            continue;}}
+                    else
+                        break;}
+            }while(compare<=0);
+
+            int *llave, *lockX;
+            llave=configuracionKey(compare);
 
             //ingresar cerradura
 
+
+
             //validar
 
+
+            delete [] llave;
+            delete [] lockX;
             }
         break;
         }
