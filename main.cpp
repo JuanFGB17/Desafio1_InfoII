@@ -55,11 +55,11 @@ int main()
             int *llave;
             llave=configuracionKey(compare, minSizeMat);
 
-            cout << endl << "Minsizemat: " << minSizeMat <<endl;
+            /*cout << endl << "Minsizemat: " << minSizeMat <<endl;
             cout << "Compare: " << compare <<endl;
             for (int i = 0; i<=compare+1; i++){
                 cout << llave[i] << ' ';}
-            cout<<endl;
+            cout<<endl;*/
 
             //Generar matriz
 
@@ -100,12 +100,15 @@ int main()
                             break;}
                 }while(validar!=1 && validar!=0);
                 if(validar==1){
-                    valid(llave, lockX, rotaciones, compare);
+                    if (valid(llave, lockX, rotaciones, compare)){
+                        cout << "La cerradura es valida" << endl << endl;
+                    }
+                    else{
+                        cout << "La cerradura no es valida" << endl << endl;
+                    }
                 }
             }
 
-
-            liberarMatriz(matriz, minSizeMat);
             delete [] llave;
             delete [] lockX;
             delete [] rotaciones;
@@ -134,18 +137,26 @@ int main()
             llave=configuracionKey(compare);
 
             //ingresar cerradura
-
-
+            lockX = cerradura(compare);
+            /*for (int i = 0; i<compare+1; i++){
+                cout << lockX[i] << ' ';}
+            cout<<endl;*/
 
             //validar
 
+            if (valid(llave, lockX, compare)){
+                cout << "La cerradura es valida" << endl << endl;
+            }
+            else{
+                cout << "La cerradura no es valida" << endl << endl;
+            }
 
             delete [] llave;
             delete [] lockX;
             }
         break;
         }
-        }
+    }
     return 0;
 }
 
