@@ -60,3 +60,56 @@ int *configuracionKey(int compare, int &minSizeMat) {
     }
     return llave;
 }
+
+int *configuracionKey(int compare) {
+
+    int k=0,fila;
+    int *llave = new int[compare + 2];
+    do{
+        while (true){
+            cout << "Ingrese una fila mayor o igual a 1" << endl;
+            cin >> k;
+            if (cin.fail()){
+                cin.clear();
+                while (cin.get() != '\n') {
+                    continue;}}
+            else
+                break;}
+    }while(k<1);
+    k-=1;
+    fila=k;
+    llave[0] = k;
+    do{
+        while (true){
+            cout << "Ingrese una columna mayor o igual a 1" << endl;
+            cin >> k;
+            if (cin.fail()){
+                cin.clear();
+                while (cin.get() != '\n') {
+                    continue;}}
+            else
+                break;}
+        if (fila==2 && k==2){
+            k=0;
+            cout << "La fila y columna no pueden tener ambas el valor 2" << endl;
+        }
+    }while(k<1);
+    k-=1;
+    llave[1] = k;
+    cout << "Ingrese los valores comparativos (-1, 0, 1)" << endl;
+    for (int i = 2; i<=compare+1; i++){
+        do{
+            while (true){
+                cout << "Valor comparativo" << endl;
+                cin >> k;
+                if (cin.fail()){
+                    cin.clear();
+                    while (cin.get() != '\n') {
+                        continue;}}
+                else
+                    break;}
+        }while(k!=-1 && k!=1 && k!=0);
+        llave[i] = k;
+    }
+    return llave;
+}
