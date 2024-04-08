@@ -1,5 +1,5 @@
 #include <iostream>
-#include <matrixGen.h>
+#include "matrixGen.h"
 using namespace std;
 
 // Función para generar una matriz con números consecutivos dejando el centro vacío

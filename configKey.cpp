@@ -1,5 +1,5 @@
 #include <iostream>
-#include <configKey.h>
+#include "configKey.h"
 using namespace std;
 
 int *configuracionKey(int compare, int &minSizeMat) {
@@ -8,7 +8,7 @@ int *configuracionKey(int compare, int &minSizeMat) {
     int *llave = new int[compare + 2];
     do{
         while (true){
-            cout << "Ingrese una fila mayor o igual a 0" << endl;
+            cout << "Ingrese una fila mayor o igual a 1" << endl;
             cin >> k;
             if (cin.fail()){
                 cin.clear();
@@ -17,11 +17,12 @@ int *configuracionKey(int compare, int &minSizeMat) {
             else
                 break;}
     }while(k<1);
-    minSizeMat=k-1;
+    k-=1;
+    minSizeMat=k;
     llave[0] = k;
     do{
         while (true){
-            cout << "Ingrese una columna mayor o igual a 0" << endl;
+            cout << "Ingrese una columna mayor o igual a 1" << endl;
             cin >> k;
             if (cin.fail()){
                 cin.clear();
@@ -34,7 +35,8 @@ int *configuracionKey(int compare, int &minSizeMat) {
             cout << "La fila y columna no pueden tener ambas el valor 2" << endl;
         }
     }while(k<1);
-    if (minSizeMat<k-1)
+    k-=1;
+    if (minSizeMat<k)
         minSizeMat=k;
     if (minSizeMat%2==0)
         minSizeMat++;
@@ -55,9 +57,6 @@ int *configuracionKey(int compare, int &minSizeMat) {
                     break;}
         }while(k!=-1 && k!=1 && k!=0);
         llave[i] = k;
-    }
-    for(int u=0;u<2;u++){
-        llave[u]-=1;
     }
     return llave;
 }
