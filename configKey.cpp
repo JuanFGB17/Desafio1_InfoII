@@ -40,7 +40,7 @@ int *configuracionKey(int compare, int &minSizeMat) {
         minSizeMat=k;
     if (minSizeMat%2==0)
         minSizeMat++;
-    if(minSizeMat!=1 && k!=1)
+    else if(minSizeMat!=1 && k!=1)
         minSizeMat += 2;
     llave[1] = k;
     cout << "Ingrese los valores comparativos (-1, 0, 1)" << endl;
