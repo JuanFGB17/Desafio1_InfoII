@@ -9,7 +9,7 @@ bool valid(int *llave, int *lock, int compare)
     int fila=llave[0];
     int columna=llave[1];
 
-    if (llave[0]>lock[0] || llave[1]>lock[0]){
+    if (llave[0]>=lock[0] || llave[1]>=lock[0]){
         return false;
     }
     else{
@@ -21,6 +21,9 @@ bool valid(int *llave, int *lock, int compare)
         cout << endl;
         liberarMatriz(matriz1,lock[0]);
         cout << "En la fila " << fila+1 << " y la columna " << columna+1 << " el valor es: " << pin <<endl;
+    }
+    if (pin==0){
+        return false;
     }
 
         cont=1;
@@ -36,12 +39,14 @@ bool valid(int *llave, int *lock, int compare)
                     columna+=(lock[cont]-lock[cont-1])/2;
                 }
                 //Si la matriz disminuye de tamaño se actualiza fila y columna
-                if(cont!=0&&lock[cont]<lock[cont-1]){
+                else if(cont!=0&&lock[cont]<lock[cont-1]){
 
                     fila-=(lock[cont-1]-lock[cont])/2;
                     columna-=(lock[cont-1]-lock[cont])/2;
                 }
-
+                if (fila>=lock[cont] || columna>=lock[cont]){
+                    return false;
+                }
                 for (rot=0;rot<3;rot++){
                     if (pin>matriz1[fila][columna]){
                         pin1=matriz1[fila][columna];
@@ -73,12 +78,14 @@ bool valid(int *llave, int *lock, int compare)
                     columna+=(lock[cont]-lock[cont-1])/2;
                 }
                 //Si la matriz disminuye de tamaño se actualiza fila y columna
-                if(cont!=0&&lock[cont]<lock[cont-1]){
+                else if(cont!=0&&lock[cont]<lock[cont-1]){
 
                     fila-=(lock[cont-1]-lock[cont])/2;
                     columna-=(lock[cont-1]-lock[cont])/2;
                 }
-
+                if (fila>=lock[cont] || columna>=lock[cont]){
+                    return false;
+                }
                 for (rot=0;rot<3;rot++){
                     if (pin<matriz1[fila][columna]){
                         pin1=matriz1[fila][columna];
@@ -110,12 +117,14 @@ bool valid(int *llave, int *lock, int compare)
                     columna+=(lock[cont]-lock[cont-1])/2;
                 }
                 //Si la matriz disminuye de tamaño se actualiza fila y columna
-                if(cont!=0&&lock[cont]<lock[cont-1]){
+                else if(cont!=0&&lock[cont]<lock[cont-1]){
 
                     fila-=(lock[cont-1]-lock[cont])/2;
                     columna-=(lock[cont-1]-lock[cont])/2;
                 }
-
+                if (fila>=lock[cont] || columna>=lock[cont]){
+                    return false;
+                }
                 for (rot=0;rot<3;rot++){
                     if (pin==matriz1[fila][columna]){
                         pin1=matriz1[fila][columna];

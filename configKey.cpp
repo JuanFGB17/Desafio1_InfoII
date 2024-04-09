@@ -30,17 +30,17 @@ int *configuracionKey(int compare, int &minSizeMat) {
                     continue;}}
             else
                 break;}
-        if (minSizeMat==1 && (k-1)==1){
-            k=0;
-            cout << "La fila y columna no pueden tener ambas el valor 2" << endl;
-        }
+
     }while(k<1);
     k-=1;
+    if(minSizeMat==1 && k==1){
+       minSizeMat = 5;
+    }
     if (minSizeMat<k)
         minSizeMat=k;
     if (minSizeMat%2==0)
         minSizeMat++;
-    else
+    if(minSizeMat!=1 && k!=1)
         minSizeMat += 2;
     llave[1] = k;
     cout << "Ingrese los valores comparativos (-1, 0, 1)" << endl;
